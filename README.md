@@ -205,5 +205,3 @@ Use this checklist before launch:
 - [ ] Broken image fallback verified
 - [ ] Final smoke test completed on the deployed URL
 
-
-6Qxr4bBf3rd4lzQz
