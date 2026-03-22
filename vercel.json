@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/googlea08d1d1c3a611b12.html",
-      "destination": "/api/google-verification"
-    }
-  ]
-}
