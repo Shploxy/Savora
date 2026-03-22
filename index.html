@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Savora | Discover Recipes Worth Sharing</title>
+    <meta
+      name="description"
+      content="Savora is a modern recipe platform for discovering curated dishes, smart filtering, and community-inspired cooking ideas."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="home">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container">
+          <nav class="navbar">
+            <a href="index.html#home" class="brand" aria-label="Savora homepage">
+              <span class="brand-mark">S</span>
+              <span class="brand-text">Savora</span>
+            </a>
+
+            <button
+              class="menu-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-links"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <div class="nav-links" id="nav-links">
+              <a href="#home">Home</a>
+              <a href="#featured">Recipes</a>
+              <a href="#categories">Categories</a>
+              <a href="#favorites">Favorites</a>
+              <a href="#submit-recipe">Submit</a>
+              <a href="admin.html" class="hidden" id="admin-link">Admin</a>
+              <a href="#contact">Contact</a>
+              <div class="auth-actions">
+                <span class="auth-status hidden" id="auth-status"></span>
+                <button class="btn btn-nav" id="auth-open-btn" type="button">
+                  Login
+                </button>
+                <button class="btn btn-secondary hidden" id="auth-logout-btn" type="button">
+                  Logout
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Community-inspired recipe discovery</p>
+              <h1>Cook with confidence. Find recipes that fit real life.</h1>
+              <p class="hero-text">
+                Explore polished recipe collections, save inspiration for later,
+                and discover dishes by ingredients, cooking time, and taste.
+                Built as the foundation for a serious food platform.
+              </p>
+
+              <form class="hero-search" id="hero-search-form">
+                <label class="input-group">
+                  <span class="sr-only">Search recipes</span>
+                  <input
+                    type="search"
+                    id="hero-search"
+                    placeholder="Search recipes, cuisines, or moods"
+                  />
+                </label>
+
+                <label class="input-group">
+                  <span class="sr-only">Ingredients you have</span>
+                  <input
+                    type="text"
+                    id="hero-ingredient"
+                    placeholder="Try: salmon, basil, oats..."
+                  />
+                </label>
+
+                <button class="btn btn-primary" type="submit">
+                  Explore Recipes
+                </button>
+              </form>
+
+              <div class="search-hints">
+                <span>Search smarter:</span>
+                <button type="button" class="hint-chip" data-fill-ingredients="salmon,avocado,rice">
+                  salmon, avocado, rice
+                </button>
+                <button type="button" class="hint-chip" data-fill-ingredients="oats,berries,yogurt">
+                  oats, berries, yogurt
+                </button>
+              </div>
+
+              <div class="hero-metrics">
+                <div>
+                  <strong>120+</strong>
+                  <span>Curated recipes</span>
+                </div>
+                <div>
+                  <strong>9</strong>
+                  <span>Professional categories</span>
+                </div>
+                <div>
+                  <strong>Future-ready</strong>
+                  <span>Built to scale with community features</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hero-card hero-card-main">
+                <img
+                  src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                  alt="Beautiful plated salmon dish"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+                <div class="hero-card-content">
+                  <span class="pill">Editor's Pick</span>
+                  <h2>Citrus Glazed Salmon Bowl</h2>
+                  <p>Bright, balanced, and ready in 25 minutes.</p>
+                </div>
+              </div>
+
+              <div class="hero-card hero-card-accent">
+                <span class="mini-label">Search by ingredients</span>
+                <p>
+                  Multi-ingredient matching helps surface the best recipe even
+                  when your kitchen is only half stocked.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ad-section">
+          <div class="container">
+            <div class="ad-slot ad-slot-banner" data-ad-slot="homepage-top-banner" data-ad-format="horizontal">
+              <span>Advertisement</span>
+              <p>Google AdSense ready banner area</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="featured-section" id="featured">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Featured recipes</p>
+                <h2>Trending dishes people would actually want to cook</h2>
+              </div>
+              <a href="#recipes" class="text-link">Browse all recipes</a>
+            </div>
+
+            <div class="featured-grid" id="featured-recipes"></div>
+          </div>
+        </section>
+
+        <section class="insights-section" id="trending">
+          <div class="container insights-grid">
+            <div>
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Trending recipes</p>
+                  <h2>What people are viewing and rating right now</h2>
+                </div>
+              </div>
+              <div class="trending-grid" id="trending-grid"></div>
+            </div>
+
+            <aside>
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Top creators</p>
+                  <h2>Creators gaining traction on the platform</h2>
+                </div>
+              </div>
+              <div class="creator-list" id="creator-list"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="categories-section" id="categories">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Explore by category</p>
+                <h2>Organized for discovery, not just scrolling</h2>
+              </div>
+            </div>
+
+            <div class="category-grid" id="category-grid">
+              <button class="category-card" data-category="Breakfast">
+                <span>Breakfast</span>
+                <small>Easy morning favorites</small>
+              </button>
+              <button class="category-card" data-category="Main Courses">
+                <span>Main Courses</span>
+                <small>Signature plates and centerpieces</small>
+              </button>
+              <button class="category-card" data-category="Light Meals">
+                <span>Light Meals</span>
+                <small>Fresh, balanced, and satisfying</small>
+              </button>
+              <button class="category-card" data-category="Dinner">
+                <span>Dinner</span>
+                <small>Weeknight and hosting ideas</small>
+              </button>
+              <button class="category-card" data-category="Desserts">
+                <span>Desserts</span>
+                <small>Elegant sweets and treats</small>
+              </button>
+              <button class="category-card" data-category="Baking">
+                <span>Baking</span>
+                <small>From rustic loaves to pastries</small>
+              </button>
+              <button class="category-card" data-category="Drinks">
+                <span>Drinks</span>
+                <small>Seasonal refreshers and warmers</small>
+              </button>
+              <button class="category-card" data-category="Healthy">
+                <span>Healthy</span>
+                <small>Nourishing everyday cooking</small>
+              </button>
+              <button class="category-card" data-category="Vegan / Vegetarian">
+                <span>Vegan / Vegetarian</span>
+                <small>Plant-forward recipes with depth</small>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="favorites-section" id="favorites">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Your saved recipes</p>
+                <h2>A clean favorites space for the dishes you want to revisit</h2>
+              </div>
+              <p class="results-text" id="favorites-count">Saved 0 recipes</p>
+            </div>
+
+            <div class="favorites-grid" id="favorites-grid"></div>
+            <p class="empty-state empty-state-card hidden" id="favorites-empty-state">
+              You have not saved any recipes yet. Tap the heart icon on any card
+              to build your favorites collection.
+            </p>
+            <p class="helper-text hidden" id="favorites-auth-note">
+              Sign in to save favorites to your account.
+            </p>
+          </div>
+        </section>
+
+        <section class="submission-section" id="submit-recipe">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Submit a recipe</p>
+                <h2>Send your recipe for review and publishing approval</h2>
+              </div>
+              <p class="results-text">Recipes are reviewed before appearing publicly</p>
+            </div>
+
+            <div class="submission-shell">
+              <form class="submission-form" id="submission-form">
+                <div class="form-grid">
+                  <label class="filter-field">
+                    <span>Title</span>
+                    <input id="recipe-title" type="text" required />
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Image URL</span>
+                    <input id="recipe-image" type="url" placeholder="https://..." required />
+                  </label>
+
+                  <label class="filter-field filter-field-full">
+                    <span>Description</span>
+                    <textarea id="recipe-description" rows="4" required></textarea>
+                  </label>
+
+                  <label class="filter-field filter-field-full">
+                    <span>Ingredients</span>
+                    <textarea
+                      id="recipe-ingredients"
+                      rows="4"
+                      placeholder="One per line or separated by commas"
+                      required
+                    ></textarea>
+                  </label>
+
+                  <label class="filter-field filter-field-full">
+                    <span>Steps</span>
+                    <textarea
+                      id="recipe-steps"
+                      rows="5"
+                      placeholder="One step per line"
+                      required
+                    ></textarea>
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Preparation time (minutes)</span>
+                    <input id="recipe-time" type="number" min="1" required />
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Difficulty</span>
+                    <select id="recipe-difficulty" required>
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Advanced">Advanced</option>
+                    </select>
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Category</span>
+                    <select id="recipe-category" required>
+                      <option value="Breakfast">Breakfast</option>
+                      <option value="Main Courses">Main Courses</option>
+                      <option value="Light Meals">Light Meals</option>
+                      <option value="Dinner">Dinner</option>
+                      <option value="Desserts">Desserts</option>
+                      <option value="Baking">Baking</option>
+                      <option value="Drinks">Drinks</option>
+                      <option value="Healthy">Healthy</option>
+                      <option value="Vegan / Vegetarian">Vegan / Vegetarian</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="submission-actions">
+                  <button class="btn btn-primary" id="submit-recipe-btn" type="submit">
+                    Submit for Approval
+                  </button>
+                  <p class="helper-text" id="submission-help-text">
+                    Sign in first to submit a recipe to the review queue.
+                  </p>
+                </div>
+              </form>
+
+              <p class="auth-message hidden" id="submission-message"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="filters-section" id="about">
+          <div class="container">
+            <div class="ad-slot ad-slot-inline" data-ad-slot="homepage-inline-banner" data-ad-format="rectangle">
+              <span>Advertisement</span>
+              <p>Reserved space for recipe-related sponsor placements</p>
+            </div>
+
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Smart filtering</p>
+                <h2>A preview of the discovery tools this platform can grow into</h2>
+              </div>
+              <button class="btn btn-secondary" id="clear-filters-btn" type="button">
+                Clear filters
+              </button>
+            </div>
+
+            <div class="filters-panel">
+              <div class="filter-field">
+                <label for="time-filter">Preparation time</label>
+                <select id="time-filter">
+                  <option value="all">Any time</option>
+                  <option value="15">15 minutes or less</option>
+                  <option value="30">30 minutes or less</option>
+                  <option value="45">45 minutes or less</option>
+                  <option value="60">60 minutes or less</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="difficulty-filter">Difficulty</label>
+                <select id="difficulty-filter">
+                  <option value="all">All levels</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Advanced">Advanced</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="category-filter">Category</label>
+                <select id="category-filter">
+                  <option value="all">All categories</option>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Main Courses">Main Courses</option>
+                  <option value="Light Meals">Light Meals</option>
+                  <option value="Dinner">Dinner</option>
+                  <option value="Desserts">Desserts</option>
+                  <option value="Baking">Baking</option>
+                  <option value="Drinks">Drinks</option>
+                  <option value="Healthy">Healthy</option>
+                  <option value="Vegan / Vegetarian">Vegan / Vegetarian</option>
+                </select>
+              </div>
+
+              <div class="filter-field">
+                <label for="match-mode-filter">Ingredient match</label>
+                <select id="match-mode-filter">
+                  <option value="any">Match any ingredient</option>
+                  <option value="all">Match all ingredients</option>
+                </select>
+              </div>
+
+              <div class="filter-field filter-field-full">
+                <label for="ingredient-filter">Ingredients you have at home</label>
+                <input
+                  type="text"
+                  id="ingredient-filter"
+                  placeholder="Enter ingredients separated by commas"
+                />
+                <small class="helper-text">
+                  Example: lemon, parsley, chicken. Recipes with more matches
+                  are shown first.
+                </small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="recipes-section" id="recipes">
+          <div class="container">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Recipe library</p>
+                <h2>Browse the first collection of platform-ready recipe cards</h2>
+              </div>
+              <div class="section-status">
+                <label class="filter-field compact-field">
+                  <span class="sr-only">Sort recipes</span>
+                  <select id="sort-filter">
+                    <option value="relevance">Sort: Relevance</option>
+                    <option value="highest-rated">Sort: Highest Rated</option>
+                    <option value="fastest">Sort: Fastest</option>
+                    <option value="alphabetical">Sort: A-Z</option>
+                  </select>
+                </label>
+                <div class="loading-pill hidden" id="loading-indicator">
+                  Updating recipes...
+                </div>
+                <div class="results-meta">
+                  <p class="results-text" id="results-count">Showing 0 recipes</p>
+                  <p class="helper-text hidden" id="results-summary"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="recipe-grid" id="recipe-grid"></div>
+            <p class="empty-state empty-state-card hidden" id="empty-state">
+              No recipes matched your filters. Try a broader search or fewer
+              ingredients.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="container footer-grid">
+          <div>
+            <a href="index.html#home" class="brand footer-brand">
+              <span class="brand-mark">S</span>
+              <span class="brand-text">Savora</span>
+            </a>
+            <p>
+              A recipe platform designed to grow into a community-first home for
+              discovery, inspiration, and creator-driven food content.
+            </p>
+          </div>
+
+          <div class="footer-details">
+            <p><strong>Made by Amon</strong></p>
+            <a href="mailto:ll88883148@gmail.com">ll88883148@gmail.com</a>
+            <p>
+              Interested in a website for your business? Feel free to get in
+              touch.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="auth-modal hidden" id="auth-modal" aria-hidden="true">
+      <div class="auth-modal-backdrop" data-auth-close></div>
+      <div class="auth-panel" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button class="auth-close" type="button" aria-label="Close authentication panel" data-auth-close>
+          &times;
+        </button>
+        <p class="eyebrow">Account access</p>
+        <h2 id="auth-title">Sign in or create an account</h2>
+        <p class="helper-text">
+          Use email and password with Supabase Auth. Favorites are saved per user.
+        </p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab is-active" type="button" data-auth-tab="login">
+            Login
+          </button>
+          <button class="auth-tab" type="button" data-auth-tab="signup">
+            Sign up
+          </button>
+        </div>
+
+        <form class="auth-form" id="auth-form">
+          <label class="filter-field">
+            <span>Email</span>
+            <input id="auth-email" type="email" autocomplete="email" required />
+          </label>
+
+          <label class="filter-field">
+            <span>Password</span>
+            <input
+              id="auth-password"
+              type="password"
+              autocomplete="current-password"
+              minlength="6"
+              required
+            />
+          </label>
+
+          <button class="btn btn-primary" id="auth-submit-btn" type="submit">
+            Login
+          </button>
+        </form>
+
+        <p class="auth-message hidden" id="auth-message"></p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
